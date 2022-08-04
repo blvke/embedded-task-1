@@ -3,7 +3,7 @@
 
 void first_board();
 void show_board();
-void move(char player);
+void who_moves(char player);
 bool valid(int row, int col);
 bool who_wins(char player);
 
@@ -38,7 +38,7 @@ bool valid(int row, int col){
     }
 }
 
-void make_move(char player){
+void who_moves(char player){
     int row = 0, col = 0;
     
     do {
@@ -83,7 +83,7 @@ int main(void){
     char player = 'X';
     bool running = true;
     int move = 0;
-    char win = ' '; 
+    char winning = ' '; 
     
     first_board();
     show_board();
@@ -99,15 +99,15 @@ int main(void){
         
         switch (player){
             case 'X':
-                make_move(player);
+                who_moves(player);
             break;
             case 'O':
-                make_move(player);
+                who_moves(player);
             break;
         }
         
    if (who_wins(player)){ //check if a player has won the game
-            win= player;
+            winning= player;
             running = false; //set to false to exit the game
         }
         
@@ -120,7 +120,7 @@ int main(void){
         show_board();
     }
     
-    if (who_wins == ' '){ //if win is not set, it's a draw
+    if (winning == ' '){ //if win is not set, it's a draw
         printf("It's a draw!");
     }
     else {
